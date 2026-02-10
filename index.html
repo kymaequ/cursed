@@ -118,7 +118,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 .locked-ending {
 	display: inline-block;
 	line-height: 1.1;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="Ending" color="red"></tw-tag><tw-tag name="Location" color="green"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="600,725" size="100,100">&lt;h1&gt;Cursed!&lt;/h1&gt;&lt;i&gt;&lt;b&gt;Cursed!&lt;/b&gt; is an &lt;b&gt;18+&lt;/b&gt; horny furry text game by Ky the Capybara, based around cock transformation. It is, obviously, intended for adults only. It contains inanimate transformation, permanent endings, occasional dubious consent, and identity loss or mental shift. Play at your peril!&lt;/i&gt;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">UI.update();</script><tw-tag name="Ending" color="red"></tw-tag><tw-tag name="Location" color="green"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="600,725" size="100,100">&lt;h1&gt;Cursed!&lt;/h1&gt;&lt;i&gt;&lt;b&gt;Cursed!&lt;/b&gt; is an &lt;b&gt;18+&lt;/b&gt; horny furry text game by Ky the Capybara, based around cock transformation. It is, obviously, intended for adults only. It contains inanimate transformation, permanent endings, occasional dubious consent, and identity loss or mental shift. Play at your peril!&lt;/i&gt;
 
 After encountering an artefact in a dungeon, you find yourself cursed to become the cock of the next person who fucks you. Will you try to seek out a cure, or accept your fate and choose whose cock to become? Welcome to &lt;b&gt;Cursed!&lt;/b&gt;
 
@@ -130,7 +130,7 @@ Also note that due to the way the game is coded, the Save/Load feature may not w
 
 &lt;&lt;button &quot;Begin Game&quot;&gt;&gt;&lt;&lt;goto &quot;SetInitialVariables&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;&lt;button &quot;Walkthrough&quot;&gt;&gt;&lt;&lt;goto &quot;Walkthrough&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;&lt;button &quot;Ending Gallery&quot;&gt;&gt;&lt;&lt;goto &quot;Ending Gallery&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;&lt;button &quot;Credits&quot;&gt;&gt;&lt;&lt;goto &quot;Credits&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;i&gt;Current game version: v1.0
+&lt;i&gt;Current game version: v1.0.1
 I&#39;d love to hear your feedback! Drop me a message if you enjoyed the game or encountered a game-breaking bug that I need to squish! https://linktr.ee/kymaequ &lt;/i&gt;
 
 &lt;&lt;set $gamestart to false&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Town Square" tags="Location" position="1325,800" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $location to &quot;Town Square&quot;&gt;&gt;&lt;&lt;if $firstPlay&gt;&gt;&lt;&lt;set $firstPlay to false&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;CheckCurseProgress&gt;&gt;
@@ -842,10 +842,15 @@ Here you can view the endings that you&#39;ve unlocked!&lt;br&gt;&lt;br&gt;
 
 &lt;&lt;widget &quot;Carouse&quot;&gt;&gt;
 &lt;&lt;linkreplace &quot;Carouse [+/- ? coins, -1 hour]&quot; t8n&gt;&gt;
+	&lt;&lt;if $timeleft &gt; 1&gt;&gt;
 	&lt;&lt;set $randomCarouse to random(1,18)&gt;&gt;
     $carousingTable[$randomCarouse]&lt;br&gt;
 	&lt;&lt;set $timeleft -= 1&gt;&gt;
+    &lt;&lt;run UI.update()&gt;&gt;
     &lt;&lt;Carouse&gt;&gt;
+    &lt;&lt;else&gt;&gt;
+    There isn&#39;t enough time left to do that...
+    &lt;&lt;/if&gt;&gt;
 &lt;&lt;/linkreplace&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
 
