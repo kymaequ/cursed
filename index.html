@@ -130,7 +130,7 @@ Also note that due to the way the game is coded, the Save/Load feature may not w
 
 &lt;&lt;button &quot;Begin Game&quot;&gt;&gt;&lt;&lt;goto &quot;SetInitialVariables&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;&lt;button &quot;Walkthrough&quot;&gt;&gt;&lt;&lt;goto &quot;Walkthrough&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;&lt;button &quot;Ending Gallery&quot;&gt;&gt;&lt;&lt;goto &quot;Ending Gallery&quot;&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;&lt;button &quot;Credits&quot;&gt;&gt;&lt;&lt;goto &quot;Credits&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;i&gt;Current game version: v1.0.1
+&lt;i&gt;Current game version: v1.0.3
 I&#39;d love to hear your feedback! Drop me a message if you enjoyed the game or encountered a game-breaking bug that I need to squish! https://linktr.ee/kymaequ &lt;/i&gt;
 
 &lt;&lt;set $gamestart to false&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Town Square" tags="Location" position="1325,800" size="100,100">&lt;&lt;nobr&gt;&gt;&lt;&lt;set $location to &quot;Town Square&quot;&gt;&gt;&lt;&lt;if $firstPlay&gt;&gt;&lt;&lt;set $firstPlay to false&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;CheckCurseProgress&gt;&gt;
@@ -181,12 +181,12 @@ A bell above the door rings as you enter the shop and take a look around. The sh
 	You ask Grigory if there&#39;s any work that needs doing to earn some coin. He tells you that there are some crates that were just delivered &#39;round back, and asks if you can help carry them in to the storeroom. You spend some time hauling crates, and when you&#39;re done Grigory hands you a shiny coin and thanks you for the help. &lt;b&gt;(+1 coin)&lt;/b&gt;&lt;br&gt;
     &lt;&lt;set $genStoreWorkCounter += 1&gt;&gt;
     &lt;&lt;set $coins += 1&gt;&gt;
-    &lt;&lt;set $timeleft -= 1&gt;&gt;
+    &lt;&lt;SpendTime 1&gt;&gt;
 &lt;&lt;elseif ($genStoreWorkCounter &lt;= 2) and (!$GrigoryCockAsk)&gt;&gt;
 	You ask Grigory if there&#39;s any more work that needs doing. &quot;We&#39;ve got an eager beaver over here!&quot; he laughs. &quot;Sure, those crates you brought in need unloading and stocking on the shelves, if you&#39;d like to help with that.&quot; You spend some time helping Grigory stock the shelves, and he gives you another coin for your labor. &lt;b&gt;(+1 coin)&lt;/b&gt;&lt;br&gt;
     &lt;&lt;set $genStoreWorkCounter += 1&gt;&gt;
     &lt;&lt;set $coins += 1&gt;&gt;
-    &lt;&lt;set $timeleft -= 1&gt;&gt;
+    &lt;&lt;SpendTime 1&gt;&gt;
 &lt;&lt;elseif ($GrigoryCockAsk) and ($genStoreWorkCounter == 0)&gt;&gt;
 	You tell Grigory you would be happy to help. He tells you that there are some crates that were just delivered &#39;round back, and asks if you can help carry them in to the storeroom. You spend some time hauling crates, and when you&#39;re done Grigory says that he&#39;d be happy to make you his cock now.&lt;br&gt;&lt;br&gt;
      &lt;&lt;set $genStoreWorkCounter += 1&gt;&gt;
@@ -474,7 +474,7 @@ Huh, that&#39;s strange. There&#39;s a note pinned to a tree that you don&#39;t 
 &lt;&lt;if !$campVisited&gt;&gt;
 	&lt;&lt;set $coins to 0&gt;&gt;
 	&lt;&lt;if $timeleft &gt; 3&gt;&gt;
-    	&lt;&lt;set $timeleft -= 3&gt;&gt;
+    	&lt;&lt;SpendTime 3&gt;&gt;
     &lt;&lt;/if&gt;&gt;
 	&lt;&lt;set $campVisited to true&gt;&gt;
 	Some time later you groan and slowly open your eyes. Pain lances through your arms, which are tied behind your back and currently pinned beneath you. Your head is throbbing and sore where you were struck.&lt;br&gt;&lt;br&gt;
@@ -856,7 +856,6 @@ Here you can view the endings that you&#39;ve unlocked!&lt;br&gt;&lt;br&gt;
 	&lt;&lt;if $timeleft &gt; 1&gt;&gt;
 	&lt;&lt;set $randomCarouse to random(1,18)&gt;&gt;
     $carousingTable[$randomCarouse]&lt;br&gt;
-	/* &lt;&lt;set $timeleft -= 1&gt;&gt; */
     &lt;&lt;SpendTime 1&gt;&gt;
     &lt;&lt;run UI.update()&gt;&gt;
     &lt;&lt;Carouse&gt;&gt;
@@ -1351,13 +1350,13 @@ You&#39;re a cock! You deserve to be used! You crave to feel the pleasure of org
 	&lt;&lt;/replace&gt;&gt;
 	&lt;&lt;set $massageReceived to true&gt;&gt;
     &lt;&lt;set $AmosAlone to true&gt;&gt;
-    &lt;&lt;set $timeleft -= 1&gt;&gt;
+    &lt;&lt;SpendTime 1&gt;&gt;
         	You say that you&#39;d love a massage and Amos gestures for you to strip down and take Sir Thallus&#39;s place on the mat. Sir Thallus begins dressing, and says that he shall be back in a little bit. He slips out the door as Amos climbs on top of you, the red panda&#39;s weight a comforting pressure on you. As he begins to knead your body, you can&#39;t help but let a small moan escape your lips.&lt;br&gt;&lt;br&gt;
             &quot;Ah, this must be a mark of the curse,&quot; Amos says, as his strong thumbs circle around the throbbing symbol glowing just above your tail. His massage techniques are excellent, and you feel that Sir Thallus is a very lucky wolf to have such a talented masseur as his squire.&lt;br&gt;&lt;br&gt;
             Even with the looming threat of this curse, you find it easy to relax. The tension in your body melts away, as do the minutes. Time passes quickly under the red panda&#39;s skilled paws and all too quickly it&#39;s nearly been an hour of this bliss.&lt;br&gt;&lt;br&gt;
             	&lt;&lt;AskSquireToCock&gt;&gt;
  &lt;&lt;else&gt;&gt;
- &lt;&lt;set $timeleft -= 1&gt;&gt;
+ &lt;&lt;SpendTime 1&gt;&gt;
  	You say that you would love another massage. The red panda smiles and gestures for you to strip down and lay on the mat. Sir Thallus dresses and tells you to enjoy, slipping out the door as Amos climbs on top of you.&lt;br&gt;&lt;br&gt;
  	Again you feel your worries melting away as the red panda expertly massages your muscles. It&#39;s almost easy to forget the curse looming over you. He really is quite talented.&lt;br&gt;&lt;br&gt;
     Sir Thallus&#39;s squire works away at the tension in your back and shoulders, putting pressure in all the right places to rub away your aches. He straddles you as he works, gripping your hips with his thighs as he leans over you and digs his paws into the knots in your back.&lt;br&gt;&lt;br&gt;
@@ -2149,7 +2148,7 @@ As the two identical rabbits perform, the crowd &lt;i&gt;oohs&lt;/i&gt; and &lt;
 			[[Become a rabbit&#39;s cock|EndingTwin]]&lt;br&gt;
     				&lt;&lt;link &quot;On second thought...&quot;&gt;&gt;
         				&lt;&lt;replace &quot;#dialogue-options2&quot; t8n&gt;&gt;
-                        &lt;&lt;set $timeleft -= 1&gt;&gt;
+                        &lt;&lt;SpendTime 1&gt;&gt;
         					The rabbit nods as you tell him you&#39;re not ready for it. &quot;We totally understand. The audience, ah, they will be disappointed, but it&#39;s ultimately your decision.&quot; He claps you on the shoulder. &quot;We wish you the best of luck with your curse. Now if you&#39;ll excuse me, I have some bad news to break to the audience.&quot;&lt;br&gt;&lt;br&gt;
                             You slip out the door of the tent as you hear the rabbits behind you announcing that the special performance won&#39;t be taking place as expected. The audience groans in disappointment, but as the curtain closes behind you you hear the rabbits promising that they&#39;ll have something even more exciting lined up.&lt;br&gt;&lt;br&gt;
                         [[Continue|Traveling Show]] 
@@ -2289,7 +2288,7 @@ You immediately start to stiffen again, excited for what the future is going to 
     Up ahead, you see a break in the trees.
     &lt;br&gt;&lt;br&gt;
     &lt;&lt;set $forestProgress = []&gt;&gt;
-    &lt;&lt;set $timeleft -= 1&gt;&gt;
+    &lt;&lt;SpendTime 1&gt;&gt;
     &lt;&lt;link &quot;Continue&quot;&gt;&gt;
         &lt;&lt;goto _foundDest&gt;&gt;
     &lt;&lt;/link&gt;&gt;
@@ -2309,7 +2308,7 @@ You immediately start to stiffen again, excited for what the future is going to 
         &lt;br&gt;
         As you wander through the forest, you get the feeling that you&#39;re lost again. You curse under your breath and try to retrace your steps, but it only gets you further lost. Eventually you&#39;re able to stumble back to the forest&#39;s entrance.&lt;br&gt;&lt;br&gt;
         &lt;&lt;set $forestProgress = []&gt;&gt;
-        &lt;&lt;set $timeleft -= 1&gt;&gt;
+        &lt;&lt;SpendTime 1&gt;&gt;
         &lt;&lt;link &quot;Continue&quot;&gt;&gt;
             &lt;&lt;goto &quot;Forest&quot;&gt;&gt;
         &lt;&lt;/link&gt;&gt;
@@ -2318,7 +2317,7 @@ You immediately start to stiffen again, excited for what the future is going to 
         You walk through the woods for a time, hoping that you&#39;re going the right way, but eventually you have to admit to yourself that you&#39;ve been going around in circles and have truly no clue where you are. You retrace your steps and eventually find your way back to the forest&#39;s entrance.
         &lt;br&gt;&lt;br&gt;
         &lt;&lt;set $forestProgress = []&gt;&gt;
-        &lt;&lt;set $timeleft -= 1&gt;&gt;
+        &lt;&lt;SpendTime 1&gt;&gt;
         &lt;&lt;link &quot;Return to the forest entrance&quot;&gt;&gt;
             &lt;&lt;goto &quot;Forest&quot;&gt;&gt;
         &lt;&lt;/link&gt;&gt;
@@ -2792,7 +2791,7 @@ It takes minutes before you&#39;re able to piece together a coherent thought aga
 		&lt;&lt;set $locationMoves += 1&gt;&gt;
 
 		&lt;&lt;if $locationMoves % 4 is 0&gt;&gt;
-			&lt;&lt;set $timeleft -= 1&gt;&gt;
+			&lt;&lt;SpendTime 1&gt;&gt;
 		&lt;&lt;/if&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 
